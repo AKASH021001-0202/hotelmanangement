@@ -30,6 +30,20 @@ roomsRouter.put("/:id", (req, res) => {
       res.status(404).send({ msg: "Room not found" });
     }
   });
+//delete the room
+roomsRouter.delete("/:roomId", (req, res) => {
+    const { roomId } = req.params;
+  
+    const initialLength = rooms.length;
+  
+    rooms = rooms.filter((room) => room.id !== roomId); 
+    if (rooms.length < initialLength) {
+      console.log("Room deleted");
+      res.send({ msg: "Room deleted" });
+    } else {
+      console.log("Room not found");
+      res.status(404).send({ msg: "Room not found" });
+    }
+  });
 
-roomsRouter
 export default  roomsRouter;
