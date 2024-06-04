@@ -5,6 +5,42 @@ const bookingRouter = express.Router();
 bookingRouter.get("/", (req, res) => {
   res.send(bookings);
 });
+bookingRouter.get("/all-room", (req, res) => {
+  const { customerId, roomId, selectedFields } = req.body;
+
+
+  // Filter bookings based on roomId and customerId if provided
+  let filteredBookings = bookings;
+  if (roomId) {
+    filteredBookings = filteredBookings.filter(booking => booking.roomId === roomId);
+  }
+  if (customerId) {
+    filteredBookings = filteredBookings.filter(booking => booking.customerId === customerId);
+  }
+
+  // Debug: Log filtered bookings
+  console.log("Filtered Bookings:", filteredBookings);
+
+  // Construct response based on selected fields
+  const response = filteredBookings.map(booking => {
+    let result = {};
+    const room = rooms.find(room => room.id === booking.roomId);
+      result.roomName = room ? room.name : null;
+      result.status = booking.status;
+      const customer = customers.find(customer => customer.id === booking.customerId);
+      result.customerName = customer ? customer.name : null;
+      result.date = booking.date;
+      result.status = booking.status;
+      result.startTime = booking.startTime;
+      result.endTime = booking.endTime;
+    
+
+    return result;
+  });
+
+  res.send(response);
+});
+
 
 bookingRouter.post("/", (req, res) => {
   const { body } = req;
@@ -58,13 +94,13 @@ bookingRouter.patch("/assign-booking/:id", (req, res) => {
     customerObj.roomId.push(roomId);
 
     // Update room's bookings
-    if (roomObj.id === roomId) {
-      roomObj.bookings.push(bookingObj);
-    } else {
-      roomObj.bookings = roomObj.bookings.filter(
-        (booking) => booking.id !== bookingId
-      );
-    }
+    // if (roomObj.id === roomId) {
+    //   roomObj.bookings.push(bookingObj);
+    // } else {
+    //   roomObj.bookings = roomObj.bookings.filter(
+    //     (booking) => booking.id !== bookingId
+    //   );
+    // }
 
     // Log success message and send response
     console.log("Booking Assignment Success!");
