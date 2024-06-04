@@ -43,7 +43,7 @@ let bookings = [
         date: "2024-06-15",
         startTime: "10:00",
         endTime: "12:00",
-        status: null
+        status: "pending"
     },
     {
         id: "booking124",
@@ -52,7 +52,7 @@ let bookings = [
         date: "2024-06-16",
         startTime: "14:00",
         endTime: "16:00",
-        status: null
+        status: "pending"
     }
 ];
 
