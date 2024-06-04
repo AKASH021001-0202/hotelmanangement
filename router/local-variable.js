@@ -1,71 +1,57 @@
-// Local variable for storing room data
+// Initial Data for Rooms
 let rooms = [
     {
-        "id": 1,
-        "name": "Conference Room A",
-        "seats": 50,
-        "amenities": ["Projector", "Whiteboard"],
-        "pricePerHour": 100
+        id: "room123",
+        name: "Conference Room A",
+        numberOfSeats: 100,
+        amenities: ["Projector", "Whiteboard", "WiFi"],
+        pricePerHour: 50,
+        bookings: []
     },
     {
-        "id": 2,
-        "name": "Conference Room B",
-        "seats": 20,
-        "amenities": ["Projector"],
-        "pricePerHour": 50
+        id: "room124",
+        name: "Conference Room B",
+        numberOfSeats: 50,
+        amenities: ["TV", "WiFi"],
+        pricePerHour: 30,
+        bookings: []
     }
 ];
 
-// Local variable for storing booking data
-let bookings = [
-    {
-        "id": 1,
-        "customerName": "John Doe",
-        "date": "2024-06-03",
-        "startTime": "10:00",
-        "endTime": "12:00",
-        "roomId": 1
-    },
-    {
-        "id": 2,
-        "customerName": "Jane Smith",
-        "date": "2024-06-03",
-        "startTime": "14:00",
-        "endTime": "16:00",
-        "roomId": 2
-    }
-];
-
-// Local variable for storing customer data
+// Initial Data for Customers
 let customers = [
     {
-        "id": 1,
-        "name": "John Doe",
-        "bookings": [
-            {
-                "bookingId": 1,
-                "roomId": 1,
-                "roomName": "Conference Room A",
-                "date": "2024-06-03",
-                "startTime": "10:00",
-                "endTime": "12:00"
-            }
-        ]
+        id: "cust123",
+        name: "John Doe",
+        email: "info@example.com"
     },
     {
-        "id": 2,
-        "name": "Jane Smith",
-        "bookings": [
-            {
-                "bookingId": 2,
-                "roomId": 2,
-                "roomName": "Conference Room B",
-                "date": "2024-06-03",
-                "startTime": "14:00",
-                "endTime": "16:00"
-            }
-        ]
+        id: "cust124",
+        name: "Jane Smith",
+        email: "enquiry@example.com"
     }
 ];
 
-export  {rooms,  bookings, customers};
+// Initial Data for Bookings
+let bookings = [
+    {
+        id: "booking123",
+        customerId: null,
+        roomId: null,
+        date: "2024-06-15",
+        startTime: "10:00",
+        endTime: "12:00",
+        status: "Confirmed"
+    },
+    {
+        id: "booking124",
+        customerId: null,
+        roomId: null,
+        date: "2024-06-16",
+        startTime: "14:00",
+        endTime: "16:00",
+        status: "Pending"
+    }
+];
+
+export { rooms, bookings, customers };
