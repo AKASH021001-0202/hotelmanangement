@@ -23,12 +23,14 @@ let customers = [
     {
         id: "cust123",
         name: "John Doe",
-        email: "info@example.com"
+        email: "info@example.com",
+       
     },
     {
         id: "cust124",
         name: "Jane Smith",
-        email: "enquiry@example.com"
+        email: "enquiry@example.com",
+     
     }
 ];
 
@@ -41,7 +43,7 @@ let bookings = [
         date: "2024-06-15",
         startTime: "10:00",
         endTime: "12:00",
-        status: "Confirmed"
+        status: null
     },
     {
         id: "booking124",
@@ -50,7 +52,7 @@ let bookings = [
         date: "2024-06-16",
         startTime: "14:00",
         endTime: "16:00",
-        status: "Pending"
+        status: null
     }
 ];
 
