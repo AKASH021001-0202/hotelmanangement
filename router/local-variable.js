@@ -24,12 +24,14 @@ let customers = [
         id: "cust123",
         name: "John Doe",
         email: "info@example.com",
+        roomId:null
        
     },
     {
         id: "cust124",
         name: "Jane Smith",
         email: "enquiry@example.com",
+        roomId:null
      
     }
 ];

@@ -52,10 +52,10 @@ bookingRouter.patch("/assign-booking/:id", (req, res) => {
     bookingObj.roomId = roomId;
     bookingObj.status = "Complete";
     // Ensure customer object has a bookings array
-    if (!customerObj.bookings) {
+    if (!customerObj.rooms) {
       customerObj.roomId = [];
     }
-    customerObj.roomId.push(bookingId);
+    customerObj.roomId.push(roomId);
 
     // Update room's bookings
     if (roomObj.id === roomId) {

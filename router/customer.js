@@ -1,14 +1,21 @@
 import express from 'express';
-import { customers } from './local-variable.js'; 
+import { bookings, customers, rooms } from './local-variable.js'; 
 
 const customerRouter= express.Router();
 
-
+// GET ALL CUSTOMER
 customerRouter.get('/', (req, res)=>{
     res.send(customers)
 })
 
+// FILTER BY USING BOOKING ID
+customerRouter.get('/:id', (req, res)=>{
+    const {id} = req.params;
+    const index = rooms.findIndex((customer) => customer.id == id);
+    res.send(customers[index])
+})
 
+// CREATE  A NEW    CUSTOMER
 customerRouter.post('/', (req, res)=>{
     const {body} = req;
     const newCustomer =  { id: `cust${Date.now()}`, ...body };
@@ -16,7 +23,7 @@ customerRouter.post('/', (req, res)=>{
     res.send({msg: "Customer created"})
 })
 
-
+// UPDATE A CUSTOMER
 customerRouter.put('/:id', (req, res)=>{
     const {id} = req.params;
     const {body} = req;
@@ -25,7 +32,7 @@ customerRouter.put('/:id', (req, res)=>{
     res.send({msg: "Customer updated"})
 })
 
-
+// DELETE A CUSTOMER
 customerRouter.delete("/:id", (req ,res)=>{
     const {id } =req.params;
     const index = customers.findIndex((customer) => customer.id == id);
